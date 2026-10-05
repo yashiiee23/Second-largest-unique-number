@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    int a[100];
+
+    cout << "Enter the numbers: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+
+    int largest = a[0];
+
+    // Find largest number
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] > largest)
+        {
+            largest = a[i];
+        }
+    }
+
+    int second;
+    bool found = false;
+
+    // Find second-largest unique number
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] < largest)
+        {
+            if (!found || a[i] > second)
+            {
+                second = a[i];
+                found = true;
+            }
+        }
+    }
+
+    if (found)
+    {
+        cout << "Second-largest unique number = " << second;
+    }
+    else
+    {
+        cout << "Second-largest unique number does not exist.";
+    }
+
+    return 0;
+}
